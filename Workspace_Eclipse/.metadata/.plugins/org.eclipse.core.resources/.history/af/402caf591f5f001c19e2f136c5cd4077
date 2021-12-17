@@ -1,0 +1,33 @@
+package filesStreams;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class TestDita {
+	public static void main(String[] args) throws IOException {
+		File file = new File("F:\\RENASAS\\Eclipse_2020_03\\Dita_Convert\\Test_DITA.txt");
+		
+		BufferedReader read= new BufferedReader(new FileReader(yourfilename));
+		ArrayList list = new ArrayList();
+
+		String dataRow = read.readLine(); 
+		while (dataRow != null){
+		    list.add(dataRow);
+		    dataRow = read.readLine(); 
+		}
+
+		FileWriter writer = new FileWriter(yourfilename); //same as your file name above so that it will replace it
+		writer.append(headerComments);
+
+		for (int i = 0; i < list.size(); i++){
+		    writer.append(System.getProperty("line.separator"));
+		    writer.append(list.get(i));
+		}
+		writer.flush();
+		writer.close();
+	}
+}
